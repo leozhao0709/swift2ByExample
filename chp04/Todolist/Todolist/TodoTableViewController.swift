@@ -9,15 +9,16 @@
 import UIKit
 import MGSwipeTableCell
 
-@objc(TodoTableViewController)
+//@objc(TodoTableViewController)
 class TodoTableViewController: UITableViewController {
+    
     
     private var todosDatastore: TodosDatastore?
     private var todos: [Todo]?
-
+    
     override func viewDidLoad() {
+        self.configure(TodosDatastore())
         super.viewDidLoad()
-        
         self.title = "Todos"
     }
     
@@ -113,8 +114,9 @@ class TodoTableViewController: UITableViewController {
 
 // MARK: Actions
 extension TodoTableViewController {
-    func addTodoButtonPressed(sender: UIButton) {
+    @IBAction func addTodoButtonPressed(sender: AnyObject) {
         print("addTodoButtonPressed")
+        performSegueWithIdentifier("addTodo", sender: self)
     }
     
     func editButtonPressed(todo: Todo) {

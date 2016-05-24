@@ -42,7 +42,7 @@ class TodosDatastore {
     }
     
     func lists()->[List] {
-        return savedLists
+        return [defaultList()] + savedLists
     }
 }
 
@@ -56,5 +56,18 @@ extension TodosDatastore {
     }
     func doneTodo(todo: Todo) {
         print("doneTodo")
+    }
+}
+
+// MARK: Defaults
+extension TodosDatastore {
+    func defaultList() -> List {
+        return List(description: "Personal")
+    }
+    
+    func defaultDueDate() -> NSDate {
+        let now = NSDate()
+        let secondsInADay = NSTimeInterval(24 * 60 * 60)
+        return now.dateByAddingTimeInterval(secondsInADay)
     }
 }
