@@ -26,7 +26,7 @@ class EditTodoTableViewController: UITableViewController {
         
         setup()
         refresh()
-        descriptionTextField.becomeFirstResponder()
+//        descriptionTextField.becomeFirstResponder()
     }
 }
 
