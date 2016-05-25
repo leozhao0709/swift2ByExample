@@ -96,7 +96,7 @@
         <!--Edit Todo Table View Controller-->
         <scene sceneID="s3x-Jw-OAd">
             <objects>
-                <tableViewController id="s5l-W6-jtp" customClass="EditTodoTableViewController" customModule="Todolist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="s5l-W6-jtp" customClass="EditTodoTableViewController" customModule="Todolist" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jfa-ax-f31">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,6 +255,6 @@
         <image name="cross" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="555-Fh-G8K"/>
+        <segue reference="T1H-eR-KqU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,14 @@ class EditTodoTableViewController: UITableViewController {
     
     private var list: List?
     private var dueDate: NSDate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setup()
+        refresh()
+        descriptionTextField.becomeFirstResponder()
+    }
 }
 
 private extension EditTodoTableViewController {
@@ -57,6 +65,50 @@ extension EditTodoTableViewController {
         if let dueDate = dueDate {
             let formattedDueDate = dateFormatter.stringFromDate(dueDate)
             dueDateLabel.text = "Due date: \(formattedDueDate)"
+        }
+    }
+    
+    func doneSelected() {
+        if let descriptionText = descriptionTextField.text,
+            list = list,
+            dueDate = dueDate
+            where !descriptionText.isEmpty {
+            let newTodo = Todo(description: descriptionText,
+                               list: list,
+                               dueDate: dueDate,
+                               done: false,
+                               doneDate: nil)
+            todosDatastore?.addTodo(newTodo)
+            todosDatastore?.deleteTodo(todoToEdit!)
+            navigationController!.popViewControllerAnimated(true)
+        }
+    }
+    
+    func showAddList() {
+        performSegueWithIdentifier("addList", sender: self)
+    }
+}
+
+enum EditTableViewRow : Int {
+    case Description
+    case List
+    case DueDate
+    case Done
+    case DatePicker
+}
+
+// MARK: UITableViewDelegate
+extension EditTodoTableViewController {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch EditTableViewRow(rawValue: indexPath.row)! {
+        case .List:
+            showAddList()
+        case .DueDate:
+            descriptionTextField.resignFirstResponder()
+        case .Done:
+            doneSelected()
+        default:
+            break
         }
     }
 }
