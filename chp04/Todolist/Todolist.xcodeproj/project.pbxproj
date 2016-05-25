@@ -21,6 +21,7 @@
 		D4C853091CF281C900C78204 /* entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C853081CF281C900C78204 /* entities.swift */; };
 		D4C8530B1CF287A800C78204 /* TodosDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C8530A1CF287A800C78204 /* TodosDatastore.swift */; };
 		D4FB35BB1CF41DA2009DB371 /* EditTodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FB35BA1CF41DA2009DB371 /* EditTodoTableViewController.swift */; };
+		D4FB35BF1CF56E8B009DB371 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FB35BE1CF56E8B009DB371 /* ListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		D4C853081CF281C900C78204 /* entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entities.swift; sourceTree = "<group>"; };
 		D4C8530A1CF287A800C78204 /* TodosDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosDatastore.swift; sourceTree = "<group>"; };
 		D4FB35BA1CF41DA2009DB371 /* EditTodoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodoTableViewController.swift; sourceTree = "<group>"; };
+		D4FB35BE1CF56E8B009DB371 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		FC101F29B16DB77D90F1BE6D /* Pods_TodolistTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodolistTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				D4C853081CF281C900C78204 /* entities.swift */,
 				D4C8530A1CF287A800C78204 /* TodosDatastore.swift */,
 				D4FB35BA1CF41DA2009DB371 /* EditTodoTableViewController.swift */,
+				D4FB35BE1CF56E8B009DB371 /* ListTableViewController.swift */,
 			);
 			path = Todolist;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				D4C853091CF281C900C78204 /* entities.swift in Sources */,
 				D4C853071CF2512400C78204 /* TodoTableViewController.swift in Sources */,
 				D4FB35BB1CF41DA2009DB371 /* EditTodoTableViewController.swift in Sources */,
+				D4FB35BF1CF56E8B009DB371 /* ListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

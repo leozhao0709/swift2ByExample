@@ -79,7 +79,7 @@ extension EditTodoTableViewController {
                                done: false,
                                doneDate: nil)
             todosDatastore?.addTodo(newTodo)
-            todosDatastore?.deleteTodo(todoToEdit!)
+            todosDatastore?.deleteTodo(todoToEdit)
             navigationController!.popViewControllerAnimated(true)
         }
     }
@@ -109,6 +109,25 @@ extension EditTodoTableViewController {
             doneSelected()
         default:
             break
+        }
+    }
+}
+
+// MARK: Segue
+extension EditTodoTableViewController {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let identifier = segue.identifier,
+            destinationViewController = segue.destinationViewController as? ListTableViewController
+            else {
+                return
+        }
+        if identifier == "addList" {
+            destinationViewController.title = "Lists"
+            destinationViewController.todosDatastore = todosDatastore
+            destinationViewController.onListSelected = { list in
+                self.list = list
+                self.refresh()
+            }
         }
     }
 }

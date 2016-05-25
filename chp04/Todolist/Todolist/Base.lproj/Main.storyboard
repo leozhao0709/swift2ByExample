@@ -7,6 +7,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Lato-Light.ttf">
             <string>Lato-Light</string>
+            <string>Lato-Light</string>
         </mutableArray>
         <mutableArray key="Lato-LightItalic.ttf">
             <string>Lato-LightItalic</string>
@@ -221,16 +222,66 @@
                             <outlet property="delegate" destination="s5l-W6-jtp" id="FrR-LJ-JC1"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="v86-rG-Kdh" id="W6j-Av-H7R"/>
                         <outlet property="dueDateLabel" destination="8Uf-AO-17h" id="d4k-6e-FSu"/>
                         <outlet property="dueDatePicker" destination="HlS-2Q-bzG" id="OwJ-cd-vKm"/>
                         <outlet property="listLabel" destination="tZ2-D4-UiE" id="FNb-VL-Ph2"/>
+                        <segue destination="6RO-Xi-MDd" kind="show" identifier="addList" id="W1J-jO-PSQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bl9-Wp-ExX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2715" y="363"/>
+        </scene>
+        <!--List Table View Controller-->
+        <scene sceneID="NcB-4c-oCg">
+            <objects>
+                <tableViewController id="6RO-Xi-MDd" customClass="ListTableViewController" customModule="Todolist" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="M4C-l8-xP8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="c7y-ht-PYY" rowHeight="50" style="IBUITableViewCellStyleDefault" id="IsJ-Bl-8oj">
+                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IsJ-Bl-8oj" id="BoU-gs-WfB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c7y-ht-PYY">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6RO-Xi-MDd" id="sGp-Ue-KbU"/>
+                            <outlet property="delegate" destination="6RO-Xi-MDd" id="Hum-Po-LeZ"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Unx-PU-9PK">
+                        <barButtonItem key="rightBarButtonItem" image="cross" id="ZKF-u2-qBr">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addListButtonTapped:" destination="6RO-Xi-MDd" id="1Hn-9i-qyc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aLW-zf-dBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3445" y="363"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fg8-SP-x4N">
@@ -255,6 +306,6 @@
         <image name="cross" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="T1H-eR-KqU"/>
+        <segue reference="555-Fh-G8K"/>
     </inferredMetricsTieBreakers>
 </document>
