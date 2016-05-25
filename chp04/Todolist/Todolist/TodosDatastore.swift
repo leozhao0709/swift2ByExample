@@ -49,13 +49,28 @@ class TodosDatastore {
 //MARK: Actions
 extension TodosDatastore {
     func addTodo(todo: Todo) {
-        print("addTodo")
+        savedTodos = savedTodos + [todo]
     }
-    func deleteTodo(todo: Todo) {
-        print("deleteTodo")
+    func deleteTodo(todo: Todo?) {
+        if let todo = todo {
+            savedTodos = savedTodos.filter({$0 != todo})
+        }
     }
+    
     func doneTodo(todo: Todo) {
-        print("doneTodo")
+        deleteTodo(todo)
+        let doneTodo = Todo(description: todo.description,
+                            list: todo.list,
+                            dueDate: todo.dueDate,
+                            done: true,
+                            doneDate: NSDate())
+        addTodo(doneTodo)
+    }
+    
+    func addListDescription(description: String) {
+        if !description.isEmpty {
+            savedLists = savedLists + [List(description: description)]
+        }
     }
 }
 
