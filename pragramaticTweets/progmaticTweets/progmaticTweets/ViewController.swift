@@ -48,9 +48,15 @@ class ViewController: UITableViewController {
         cell.userNameLabel.text = parsedTweet.userName
         cell.tweetTextLabel.text = parsedTweet.tweetText
         cell.createdAtLabel.text = parsedTweet.createdAt
-        if let url = parsedTweet.userAvatarURL, imageData = NSData(contentsOfURL: url) {
-            cell.avatarImageView.image = UIImage(data: imageData)
+        cell.avatarImageView.image = nil
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { 
+            if let url = parsedTweet.userAvatarURL, imageData = NSData(contentsOfURL: url) where cell.userNameLabel.text == parsedTweet.userName {
+                dispatch_async(dispatch_get_main_queue(), { 
+                    cell.avatarImageView.image = UIImage(data: imageData)
+                })
+            }
         }
+        
         return cell
     }
     
@@ -108,7 +114,12 @@ class ViewController: UITableViewController {
                 }
                 parsedTweets.append(parsedTweet)
             }
-            tableView.reloadData()
+            NSLog(NSThread.isMainThread() ? "on main thread": "Not main thread")
+            dispatch_async(dispatch_get_main_queue(), {
+                NSLog(NSThread.isMainThread() ? "on main thread": "Not main thread")
+                self.tableView.reloadData()
+            })
+            
         } catch let error as NSError {
             NSLog("JSON error: \(error)")
         }
