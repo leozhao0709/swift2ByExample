@@ -13,10 +13,20 @@ import Alamofire
 
 let defaultAvatarURL = NSURL(string: "https://abs.twimg.com/sticky/default_profile_images/default_profile_6_200x200.png")
 
-class ViewController: UITableViewController {
+class RootViewController: UITableViewController {
     
     
     var parsedTweets: [ParsedTweet] = []
+    
+    @IBAction func handleTweetButtonTapped(sender: AnyObject) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+           let tweetVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            tweetVC.setInitialText("I just finished the first project in IOS 9 SDK Development. #pragsios9")
+            self.presentViewController(tweetVC, animated: true, completion: nil)
+        } else {
+            NSLog("Can't send tweet")
+        }
+    }
     
 
     override func viewDidLoad() {
@@ -24,7 +34,7 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.reloadTweets()
         let refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), forControlEvents: .ValueChanged)
+        refresher.addTarget(self, action: #selector(RootViewController.handleRefresh(_:)), forControlEvents: .ValueChanged)
         refreshControl = refresher
     }
 
@@ -38,6 +48,7 @@ class ViewController: UITableViewController {
         return 1
     }
     
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parsedTweets.count
     }
@@ -60,27 +71,13 @@ class ViewController: UITableViewController {
         return cell
     }
     
-    func reloadTweets() {
-        let accountStore = ACAccountStore()
-        let twitterAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
-        accountStore.requestAccessToAccountsWithType(twitterAccountType, options: nil) { (granted: Bool, error: NSError!) in
-            guard granted else {
-                NSLog("account access not granted")
-                return
-            }
-            let twitterAccounts = accountStore.accountsWithAccountType(twitterAccountType)
-            guard twitterAccounts.count > 0 else {
-                NSLog("no twitter accounts configured")
-                return
-            }
-            
-            let twitterParams = ["count": "100"]
-            let twitterAPIURL = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
-            let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, URL: twitterAPIURL, parameters: twitterParams)
-            request.account = twitterAccounts.first as! ACAccount
-            request.performRequestWithHandler({ (data: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) in
-                self.handleTwitterData(data, urlResponse: urlResponse, error: error)
-            })
+    func reloadTweets() {        
+        let twitterParams = ["count": "100"]
+        guard let twitterAPIURL = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json") else {
+            return
+        }
+        sendTwitterRequest(twitterAPIURL, params: twitterParams) { (data: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) in
+            self.handleTwitterData(data, urlResponse: urlResponse, error: error)
         }
     }
     

@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wWd-JR-6pJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MgM-6E-x8w">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="DtN-d8-XPB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQM-WQ-t0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="MgM-6E-x8w" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U4w-GC-oed">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wWd-JR-6pJ" kind="relationship" relationship="rootViewController" id="oZS-8i-F6k"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="956" y="-479"/>
+        </scene>
+        <!--Tweets-->
         <scene sceneID="jUP-jI-Ydb">
             <objects>
-                <tableViewController id="wWd-JR-6pJ" customClass="ViewController" customModule="progmaticTweets" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="wWd-JR-6pJ" customClass="RootViewController" customModule="progmaticTweets" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" id="sFk-Y0-fyg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserAndTweetCell" textLabel="rSf-AI-KYE" detailTextLabel="Mzo-Cn-Coq" style="IBUITableViewCellStyleSubtitle" id="1OW-Qw-6eD">
-                                <rect key="frame" x="0.0" y="28" width="600" height="125"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1OW-Qw-6eD" id="6Oh-Ol-5Fe">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
@@ -40,7 +56,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomTweetCell" rowHeight="125" id="K3W-fY-p8G" customClass="ParsedTweetCell" customModule="progmaticTweets">
-                                <rect key="frame" x="0.0" y="153" width="600" height="125"/>
+                                <rect key="frame" x="0.0" y="217" width="600" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3W-fY-p8G" id="Mh9-jN-tuk">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
@@ -104,10 +120,17 @@
                             <outlet property="delegate" destination="wWd-JR-6pJ" id="vdt-A7-Vrk"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Tweets" id="FQW-Xt-BF0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PqH-hl-4h0">
+                            <connections>
+                                <action selector="handleTweetButtonTapped:" destination="wWd-JR-6pJ" id="QX3-Pn-0Wh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uh1-NI-vqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="383"/>
+            <point key="canvasLocation" x="1865" y="-479"/>
         </scene>
     </scenes>
 </document>
