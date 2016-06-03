@@ -103,6 +103,7 @@ class RootViewController: UITableViewController {
                 var parsedTweet = ParsedTweet()
                 parsedTweet.tweetText = tweetDict["text"] as? String
                 parsedTweet.createdAt = tweetDict["created_at"] as? String
+                parsedTweet.tweetIdString = tweetDict["id_str"] as? String
                 if let userDict = tweetDict["user"] as? [String: AnyObject] {
                     parsedTweet.userName = userDict["name"] as? String
                     if let avatarURLString = userDict["profile_image_url_https"] as? String {
@@ -119,6 +120,16 @@ class RootViewController: UITableViewController {
             
         } catch let error as NSError {
             NSLog("JSON error: \(error)")
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showTweetDetailsSegue" {
+            if let row = self.tableView.indexPathForSelectedRow?.row,
+            tweetDetailsVC = segue.destinationViewController as? TweetDetailViewController{
+                let parsedTweet = parsedTweets[row]
+                tweetDetailsVC.tweetIdString = parsedTweet.tweetIdString
+            }
         }
     }
 
