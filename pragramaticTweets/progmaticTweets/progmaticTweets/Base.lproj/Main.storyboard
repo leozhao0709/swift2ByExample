@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="217" width="600" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3W-fY-p8G" id="Mh9-jN-tuk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m1Q-Fi-qLf">
@@ -135,7 +135,6 @@
         <!--Navigation Controller-->
         <scene sceneID="031-fy-04Y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eqi-q2-m9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="DUk-5d-eW4" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xtA-2T-XZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -145,6 +144,7 @@
                         <segue destination="wWd-JR-6pJ" kind="relationship" relationship="rootViewController" id="pwL-Xa-6Tp"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqi-q2-m9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1452" y="272"/>
         </scene>
@@ -164,7 +164,7 @@
         <!--Tweet-->
         <scene sceneID="1QZ-6V-VMS">
             <objects>
-                <viewController id="GOp-mO-krd" customClass="TweetDetailViewController" customModule="progmaticTweets" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetDetailVC" id="GOp-mO-krd" customClass="TweetDetailViewController" customModule="progmaticTweets" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uho-I0-N7s"/>
                         <viewControllerLayoutGuide type="bottom" id="SGN-bD-jpQ"/>

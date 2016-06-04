@@ -43,7 +43,6 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
     }
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-        NSLog("************")
         return true
     }
 
@@ -85,6 +84,13 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
         if let splitViewController = self.splitViewController where splitViewController.viewControllers.count > 1 {
             if let tweetDetailNav = splitViewController.viewControllers[1] as? UINavigationController, tweetDetailVC = tweetDetailNav.viewControllers[0] as? TweetDetailViewController {
                 tweetDetailVC.tweetIdString = parsedTweet.tweetIdString
+            }
+        }
+        else {
+            if let storyboard = self.storyboard,
+                detailVC = storyboard.instantiateViewControllerWithIdentifier("TweetDetailVC") as? TweetDetailViewController {
+                detailVC.tweetIdString = parsedTweet.tweetIdString
+                splitViewController?.showDetailViewController(detailVC, sender: self)
             }
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
