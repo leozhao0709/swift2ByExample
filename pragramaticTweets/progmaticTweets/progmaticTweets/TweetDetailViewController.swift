@@ -92,10 +92,23 @@ class TweetDetailViewController: UIViewController {
                     mediaData = NSData(contentsOfURL: mediaURL) {
                     tweetImageView.image = UIImage(data: mediaData)
                 }
+                else {
+                    tweetImageView.image = nil
+                }
             }
         } catch let error as NSError {
             NSLog("JSON error: \(error)")
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let userDetailVC = segue.destinationViewController as? UserDetailViewController where segue.identifier == "showUserDetailSegue" {
+            userDetailVC.screenName = userScreenNameLabel.text
+        }
+    }
+    
+    @IBAction func unwindToTweetDetailVC(segue: UIStoryboardSegue) {
+        
     }
 
 }

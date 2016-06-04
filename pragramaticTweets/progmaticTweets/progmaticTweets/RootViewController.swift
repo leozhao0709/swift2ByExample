@@ -13,7 +13,7 @@ import Alamofire
 
 let defaultAvatarURL = NSURL(string: "https://abs.twimg.com/sticky/default_profile_images/default_profile_6_200x200.png")
 
-class RootViewController: UITableViewController {
+class RootViewController: UITableViewController, UISplitViewControllerDelegate {
     
     
     var parsedTweets: [ParsedTweet] = []
@@ -36,6 +36,15 @@ class RootViewController: UITableViewController {
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(RootViewController.handleRefresh(_:)), forControlEvents: .ValueChanged)
         refreshControl = refresher
+        
+        if let splitViewController = self.splitViewController {
+            splitViewController.delegate = self
+        }
+    }
+    
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        NSLog("************")
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +78,16 @@ class RootViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let parsedTweet = parsedTweets[indexPath.row]
+        if let splitViewController = self.splitViewController where splitViewController.viewControllers.count > 1 {
+            if let tweetDetailNav = splitViewController.viewControllers[1] as? UINavigationController, tweetDetailVC = tweetDetailNav.viewControllers[0] as? TweetDetailViewController {
+                tweetDetailVC.tweetIdString = parsedTweet.tweetIdString
+            }
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func reloadTweets() {        
@@ -132,6 +151,8 @@ class RootViewController: UITableViewController {
             }
         }
     }
+    
+    
 
 }
 

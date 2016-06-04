@@ -34,11 +34,12 @@ class UserDetailViewController: UIViewController {
         guard let screenName = screenName else {
             return
         }
-        let twitterParams = ["screent_name": screenName]
+        
+        let twitterParams = ["screen_name": screenName]
         if let twitterAPIURL = NSURL(string: "https://api.twitter.com/1.1/users/show.json") {
             sendTwitterRequest(twitterAPIURL, params: twitterParams, completion: { (data, urlResponse, error) in
                 dispatch_async(dispatch_get_main_queue(), { 
-                    self.handleTwitterData(
+                    self.handleTwitterData(data, urlResponse: urlResponse, error: error)
                 })
             })
         }
@@ -67,12 +68,17 @@ class UserDetailViewController: UIViewController {
                 NSLog("handleTwitterData() didn't get a dictionary")
                 return
             }
-            userRealNameLabel.text = tweetDict["name"] as! String
-            userScreenNameLabel.text = tweetDict["screen_name"] as! String
-            userLocationLabel.text = tweetDict["location"] as! String
             
-            
-        } catch error as NSError {
+            userRealNameLabel.text = tweetDict["name"] as? String
+            userScreenNameLabel.text = tweetDict["screen_name"] as? String
+            userLocationLabel.text = tweetDict["location"] as? String
+            userDescriptionLabel.text = tweetDict["description"] as? String
+            if let userImageURL = NSURL(string: (tweetDict["profile_image_url_https"] as! String)),
+                userImageData = NSData(contentsOfURL: userImageURL)
+            {
+                self.userImageView.image = UIImage(data: userImageData)
+            }
+        } catch let error as NSError {
             NSLog("JSON error: \(error)")
         }
     }
