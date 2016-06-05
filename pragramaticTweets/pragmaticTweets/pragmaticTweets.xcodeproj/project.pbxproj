@@ -21,6 +21,7 @@
 		D4AD21711CF8C8DE006A2289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AD216F1CF8C8DE006A2289 /* LaunchScreen.storyboard */; };
 		D4AD217C1CF8C8DE006A2289 /* pragmaticTweetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AD217B1CF8C8DE006A2289 /* pragmaticTweetsTests.swift */; };
 		D4AD21871CF8C8DF006A2289 /* pragmaticTweetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AD21861CF8C8DF006A2289 /* pragmaticTweetsUITests.swift */; };
+		D4B86ABD1D0402900028B018 /* UserImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B86ABC1D0402900028B018 /* UserImageDetailViewController.swift */; };
 		D4BED1DE1CFA69CC0007F89F /* WebViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BED1DD1CFA69CC0007F89F /* WebViewTests.swift */; };
 		D4BED1E01CFB90D10007F89F /* ParsedTweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BED1DF1CFB90D10007F89F /* ParsedTweet.swift */; };
 		D4BED1E21CFBF7ED0007F89F /* ParsedTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BED1E11CFBF7ED0007F89F /* ParsedTweetCell.swift */; };
@@ -75,6 +76,7 @@
 		D4AD21821CF8C8DF006A2289 /* pragmaticTweets.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pragmaticTweets.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AD21861CF8C8DF006A2289 /* pragmaticTweetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pragmaticTweetsUITests.swift; sourceTree = "<group>"; };
 		D4AD21881CF8C8DF006A2289 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4B86ABC1D0402900028B018 /* UserImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImageDetailViewController.swift; sourceTree = "<group>"; };
 		D4BED1DD1CFA69CC0007F89F /* WebViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewTests.swift; sourceTree = "<group>"; };
 		D4BED1DF1CFB90D10007F89F /* ParsedTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsedTweet.swift; sourceTree = "<group>"; };
 		D4BED1E11CFBF7ED0007F89F /* ParsedTweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsedTweetCell.swift; sourceTree = "<group>"; };
@@ -193,13 +195,13 @@
 				D4F0D3E41CFF58D90089323E /* Root VC */,
 				D479F0AE1D0110B20084011E /* Tweet Detail VC */,
 				D43F042E1D026101002E0898 /* User Detail VC */,
+				D4B86ABB1D04024C0028B018 /* User Image Detail VC */,
 				D4F0D3E51CFF592F0089323E /* Twitter Utilities */,
 				D4AD216A1CF8C8DE006A2289 /* Main.storyboard */,
 				D4AD216D1CF8C8DE006A2289 /* Assets.xcassets */,
 				D4AD216F1CF8C8DE006A2289 /* LaunchScreen.storyboard */,
 				D4AD21721CF8C8DE006A2289 /* Info.plist */,
 			);
-			name = pragmaticTweets;
 			path = pragmaticTweets;
 			sourceTree = "<group>";
 		};
@@ -210,7 +212,6 @@
 				D4AD217D1CF8C8DE006A2289 /* Info.plist */,
 				D4BED1DD1CFA69CC0007F89F /* WebViewTests.swift */,
 			);
-			name = pragmaticTweetsTests;
 			path = pragmaticTweetsTests;
 			sourceTree = "<group>";
 		};
@@ -220,8 +221,15 @@
 				D4AD21861CF8C8DF006A2289 /* pragmaticTweetsUITests.swift */,
 				D4AD21881CF8C8DF006A2289 /* Info.plist */,
 			);
-			name = pragmaticTweetsUITests;
 			path = pragmaticTweetsUITests;
+			sourceTree = "<group>";
+		};
+		D4B86ABB1D04024C0028B018 /* User Image Detail VC */ = {
+			isa = PBXGroup;
+			children = (
+				D4B86ABC1D0402900028B018 /* UserImageDetailViewController.swift */,
+			);
+			name = "User Image Detail VC";
 			sourceTree = "<group>";
 		};
 		D4F0D3E41CFF58D90089323E /* Root VC */ = {
@@ -507,6 +515,7 @@
 			files = (
 				D43F04301D026146002E0898 /* UserDetailViewController.swift in Sources */,
 				D4F0D3E71CFF60360089323E /* TwitterAPIRequestUtilities.swift in Sources */,
+				D4B86ABD1D0402900028B018 /* UserImageDetailViewController.swift in Sources */,
 				D4BED1E21CFBF7ED0007F89F /* ParsedTweetCell.swift in Sources */,
 				D4BED1E01CFB90D10007F89F /* ParsedTweet.swift in Sources */,
 				D4AD21691CF8C8DE006A2289 /* RootViewController.swift in Sources */,

@@ -17,6 +17,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var userDescriptionLabel: UILabel!
     
     var screenName: String?
+    var userImageURL: NSURL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,11 +77,24 @@ class UserDetailViewController: UIViewController {
             if let userImageURL = NSURL(string: (tweetDict["profile_image_url_https"] as! String)),
                 userImageData = NSData(contentsOfURL: userImageURL)
             {
+                self.userImageURL = userImageURL
                 self.userImageView.image = UIImage(data: userImageData)
             }
         } catch let error as NSError {
             NSLog("JSON error: \(error)")
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let imageDetailVC = segue.destinationViewController as? UserImageDetailViewController, userImageURL = self.userImageURL where segue.identifier == "showUserImageDetailSegue" {
+            var urlString = userImageURL.absoluteString
+            urlString = urlString.stringByReplacingOccurrencesOfString("_normal", withString: "")
+            imageDetailVC.userImageURL = NSURL(string: urlString)
+        }
+    }
+    
+    @IBAction func unwindToUserDetailVC(segue: UIStoryboardSegue) {
+        
     }
 
 }

@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="217" width="600" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3W-fY-p8G" id="Mh9-jN-tuk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m1Q-Fi-qLf">
@@ -253,7 +253,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-bG-WZO">
                                 <rect key="frame" x="20" y="20" width="560" height="237"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yCv-vU-rU6">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yCv-vU-rU6">
                                         <rect key="frame" x="230" y="0.0" width="100" height="100"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -315,14 +315,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ao-Ge-LPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4hM-Ym-t6Z" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="QdZ-df-QjX"/>
+                <tapGestureRecognizer id="QdZ-df-QjX">
+                    <connections>
+                        <segue destination="aQU-Io-Cjf" kind="presentation" identifier="showUserImageDetailSegue" id="BjC-s5-wfI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3070" y="1029"/>
         </scene>
-        <!--View Controller-->
+        <!--User Image Detail View Controller-->
         <scene sceneID="Pmm-UT-TZ6">
             <objects>
-                <viewController id="aQU-Io-Cjf" sceneMemberID="viewController">
+                <viewController id="aQU-Io-Cjf" customClass="UserImageDetailViewController" customModule="pragmaticTweets" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZrJ-Sc-zTE"/>
                         <viewControllerLayoutGuide type="bottom" id="J0j-FZ-YcA"/>
@@ -331,16 +335,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-hv-TjT">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-hv-TjT">
                                 <rect key="frame" x="160" y="160" width="280" height="280"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Ydg-jL-gFP"/>
                                     <constraint firstAttribute="height" constant="280" id="hvz-yY-BAp"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zqN-6x-mHe" appends="YES" id="Ezb-Nl-3e3"/>
+                                    <outletCollection property="gestureRecognizers" destination="rVm-ih-Jn9" appends="YES" id="aIG-xP-Jmn"/>
+                                    <outletCollection property="gestureRecognizers" destination="v9R-Yf-Sxl" appends="YES" id="Y9f-k5-6oE"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2z-9n-aOh">
                                 <rect key="frame" x="282" y="550" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="dqT-M2-1yn" kind="unwind" unwindAction="unwindToUserDetailVC:" id="vWy-3V-WQN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -351,8 +364,27 @@
                             <constraint firstItem="6qg-hv-TjT" firstAttribute="centerY" secondItem="TLV-3X-0Tt" secondAttribute="centerY" id="ofb-YO-aNi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userImageView" destination="6qg-hv-TjT" id="6NK-MZ-nU1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W1G-LN-9rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dqT-M2-1yn" userLabel="Exit" sceneMemberID="exit"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="zqN-6x-mHe">
+                    <connections>
+                        <action selector="handlePanGesture:" destination="aQU-Io-Cjf" id="4K5-TO-ka7"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="rVm-ih-Jn9">
+                    <connections>
+                        <action selector="handleDoubleTapGesture:" destination="aQU-Io-Cjf" id="ThB-6j-B7D"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="v9R-Yf-Sxl">
+                    <connections>
+                        <action selector="handlePinchGesture:" destination="aQU-Io-Cjf" id="0jO-GR-F1j"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3808" y="1029"/>
         </scene>
