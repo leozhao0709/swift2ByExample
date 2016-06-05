@@ -39,11 +39,27 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
         
         if let splitViewController = self.splitViewController {
             splitViewController.delegate = self
+            NSLog("split exist ***")
+            addShowSplitPrimaryButton(splitViewController)
         }
     }
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
         return true
+    }
+    
+    func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+        if displayMode == .PrimaryHidden {
+            self.addShowSplitPrimaryButton(svc)
+        }
+    }
+    
+    func addShowSplitPrimaryButton(splitViewController: UISplitViewController) {
+        let barbuttonItem = splitViewController.displayModeButtonItem()
+        if let detailNav = splitViewController.viewControllers.last as? UINavigationController {
+            detailNav.topViewController?.navigationItem.leftBarButtonItem = barbuttonItem
+            NSLog("add detail bar button item")
+        }
     }
 
     override func didReceiveMemoryWarning() {
