@@ -1,6 +1,0 @@
-framework module Pods_progmaticTweetsTests {
-  umbrella header "Pods-progmaticTweetsTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
