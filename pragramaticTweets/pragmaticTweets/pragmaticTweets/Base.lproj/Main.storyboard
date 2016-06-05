@@ -335,19 +335,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-hv-TjT">
-                                <rect key="frame" x="160" y="160" width="280" height="280"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Ydg-jL-gFP"/>
-                                    <constraint firstAttribute="height" constant="280" id="hvz-yY-BAp"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="zqN-6x-mHe" appends="YES" id="Ezb-Nl-3e3"/>
-                                    <outletCollection property="gestureRecognizers" destination="rVm-ih-Jn9" appends="YES" id="aIG-xP-Jmn"/>
-                                    <outletCollection property="gestureRecognizers" destination="v9R-Yf-Sxl" appends="YES" id="Y9f-k5-6oE"/>
-                                </connections>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2z-9n-aOh">
                                 <rect key="frame" x="282" y="550" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
@@ -355,17 +342,41 @@
                                     <segue destination="dqT-M2-1yn" kind="unwind" unwindAction="unwindToUserDetailVC:" id="vWy-3V-WQN"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHC-nL-zHd">
+                                <rect key="frame" x="160" y="160" width="280" height="280"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cdr-OL-zuu">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="Glx-0s-lvc"/>
+                                            <constraint firstAttribute="height" constant="280" id="tUp-Zn-Dro"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="GJf-AX-gzt"/>
+                                    <constraint firstAttribute="height" constant="280" id="Vap-4H-47l"/>
+                                    <constraint firstItem="cdr-OL-zuu" firstAttribute="centerY" secondItem="CHC-nL-zHd" secondAttribute="centerY" id="bxG-cL-IM0"/>
+                                    <constraint firstItem="cdr-OL-zuu" firstAttribute="centerX" secondItem="CHC-nL-zHd" secondAttribute="centerX" id="etF-g1-yll"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zqN-6x-mHe" appends="YES" id="ZOr-BT-fAI"/>
+                                    <outletCollection property="gestureRecognizers" destination="rVm-ih-Jn9" appends="YES" id="i5s-WN-Y1J"/>
+                                    <outletCollection property="gestureRecognizers" destination="v9R-Yf-Sxl" appends="YES" id="hZb-eb-LdK"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j2z-9n-aOh" firstAttribute="centerX" secondItem="TLV-3X-0Tt" secondAttribute="centerX" id="IYs-Aw-bPX"/>
-                            <constraint firstItem="6qg-hv-TjT" firstAttribute="centerX" secondItem="TLV-3X-0Tt" secondAttribute="centerX" id="XAc-bd-0iv"/>
+                            <constraint firstItem="CHC-nL-zHd" firstAttribute="centerY" secondItem="TLV-3X-0Tt" secondAttribute="centerY" id="Qf8-lj-YSm"/>
+                            <constraint firstItem="CHC-nL-zHd" firstAttribute="centerX" secondItem="TLV-3X-0Tt" secondAttribute="centerX" id="cdx-UR-HY7"/>
                             <constraint firstItem="J0j-FZ-YcA" firstAttribute="top" secondItem="j2z-9n-aOh" secondAttribute="bottom" constant="20" id="jXk-63-BKu"/>
-                            <constraint firstItem="6qg-hv-TjT" firstAttribute="centerY" secondItem="TLV-3X-0Tt" secondAttribute="centerY" id="ofb-YO-aNi"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="userImageView" destination="6qg-hv-TjT" id="6NK-MZ-nU1"/>
+                        <outlet property="userImageView" destination="cdr-OL-zuu" id="Y7I-rx-CRc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W1G-LN-9rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
