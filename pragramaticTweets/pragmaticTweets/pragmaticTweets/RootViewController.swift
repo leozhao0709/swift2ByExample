@@ -9,7 +9,7 @@
 import UIKit
 import Social
 import Accounts
-import Alamofire
+import Photos
 
 let defaultAvatarURL = NSURL(string: "https://abs.twimg.com/sticky/default_profile_images/default_profile_6_200x200.png")
 
@@ -28,6 +28,33 @@ class RootViewController: UITableViewController, UISplitViewControllerDelegate {
         }
     }
     
+    @IBAction func handlePhotoButtonTapped(sender: UIBarButtonItem) {
+        let fetchOptions = PHFetchOptions()
+        PHPhotoLibrary.requestAuthorization { (authorized: PHAuthorizationStatus) in
+            if authorized == .Authorized {
+                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+                let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
+                if let firstPhoto = fetchResult.firstObject as? PHAsset {
+                    self.createTweetForAsset(firstPhoto)
+                }
+            }
+        }
+    }
+    
+    func createTweetForAsset(asset: PHAsset) {
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: CGSize(width: 640.0, height: 480), contentMode: .AspectFit, options: requestOptions) { (image: UIImage?, info: [NSObject : AnyObject]?) in
+            if let image = image where SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+                let tweetVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                tweetVC.setInitialText("Here's a photo I tweeted. #pragsios9")
+                tweetVC.addImage(image)
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.presentViewController(tweetVC, animated: true, completion: nil)
+                })
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
