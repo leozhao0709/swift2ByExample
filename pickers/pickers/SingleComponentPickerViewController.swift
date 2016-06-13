@@ -8,8 +8,11 @@
 
 import UIKit
 
-class SingleComponentPickerViewController: UIViewController {
+class SingleComponentPickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBOutlet weak var singlePicker: UIPickerView!
+    private let characterNames = ["Luke", "Leia", "Han", "Chewbacca", "Artoo", "Threepio", "Lando"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,4 +35,30 @@ class SingleComponentPickerViewController: UIViewController {
     }
     */
 
+    @IBAction func onButtonPressed(sender: UIButton) {
+        let row = singlePicker.selectedRowInComponent(0)
+        let selected = characterNames[row]
+        let title = "You selected \(selected)!"
+        
+        let alert = UIAlertController(title: title, message: "Thank you for chooseing", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "You're welcome", style: .Default, handler: nil)
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // MARK:-
+    // MARK: Picker Data Source Methods
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return characterNames.count
+    }
+    
+    // MARK: Picker Delegate Methods
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return characterNames[row]
+    }
+    
 }
