@@ -123,9 +123,48 @@
                     <view key="view" contentMode="scaleToFill" id="cOB-xv-jpG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZq-Qb-9Hj">
+                                <rect key="frame" x="140" y="20" width="320" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUm-iQ-f0p">
+                                <rect key="frame" x="285" y="371" width="31" height="30"/>
+                                <state key="normal" title="Spin"/>
+                                <connections>
+                                    <action selector="spin:" destination="YHH-lo-XWz" eventType="touchUpInside" id="rOE-p5-oaf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDh-Pj-Ypm">
+                                <rect key="frame" x="243" y="264" width="115" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <color key="textColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eDh-Pj-Ypm" firstAttribute="top" secondItem="uZq-Qb-9Hj" secondAttribute="bottom" constant="28" id="121-q8-Maq"/>
+                            <constraint firstItem="pUm-iQ-f0p" firstAttribute="top" secondItem="eDh-Pj-Ypm" secondAttribute="bottom" constant="49" id="4OZ-SY-IYe"/>
+                            <constraint firstItem="eDh-Pj-Ypm" firstAttribute="centerX" secondItem="cOB-xv-jpG" secondAttribute="centerX" id="GwD-KH-EqF"/>
+                            <constraint firstItem="eDh-Pj-Ypm" firstAttribute="top" secondItem="uZq-Qb-9Hj" secondAttribute="bottom" constant="3" id="QG5-Fl-Xcn"/>
+                            <constraint firstItem="uZq-Qb-9Hj" firstAttribute="centerX" secondItem="cOB-xv-jpG" secondAttribute="centerX" id="UgY-wH-UyR"/>
+                            <constraint firstItem="pUm-iQ-f0p" firstAttribute="centerX" secondItem="cOB-xv-jpG" secondAttribute="centerX" id="X68-9l-s3P"/>
+                            <constraint firstItem="eDh-Pj-Ypm" firstAttribute="top" secondItem="uZq-Qb-9Hj" secondAttribute="bottom" constant="28" id="rVe-fw-RNj"/>
+                            <constraint firstItem="uZq-Qb-9Hj" firstAttribute="top" secondItem="2wp-yt-RkS" secondAttribute="bottom" id="voD-Ew-Vbz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="121-q8-Maq"/>
+                                <exclude reference="QG5-Fl-Xcn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="customer" image="toolicon" id="uBu-6W-bbo"/>
+                    <connections>
+                        <outlet property="button" destination="pUm-iQ-f0p" id="2ws-Q1-Yto"/>
+                        <outlet property="picker" destination="uZq-Qb-9Hj" id="ofz-gO-pf2"/>
+                        <outlet property="winLabel" destination="eDh-Pj-Ypm" id="njA-xK-vza"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SD-IA-K6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D407D1BE1D10B5ED00090BF5 /* crunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = D407D1BC1D10B5ED00090BF5 /* crunch.wav */; };
+		D407D1BF1D10B5ED00090BF5 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = D407D1BD1D10B5ED00090BF5 /* win.wav */; };
 		D4B86ACB1D0E4CC00028B018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B86ACA1D0E4CC00028B018 /* AppDelegate.swift */; };
 		D4B86ACD1D0E4CC00028B018 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B86ACC1D0E4CC00028B018 /* ViewController.swift */; };
 		D4B86AD01D0E4CC00028B018 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B86ACE1D0E4CC00028B018 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D407D1BC1D10B5ED00090BF5 /* crunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = crunch.wav; path = "../../../../git/iPhoneDevelopmentSDK-Apress/07 - Picker Sounds/crunch.wav"; sourceTree = "<group>"; };
+		D407D1BD1D10B5ED00090BF5 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = win.wav; path = "../../../../git/iPhoneDevelopmentSDK-Apress/07 - Picker Sounds/win.wav"; sourceTree = "<group>"; };
 		D4B86AC71D0E4CC00028B018 /* pickers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pickers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B86ACA1D0E4CC00028B018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B86ACC1D0E4CC00028B018 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		D4B86AC91D0E4CC00028B018 /* pickers */ = {
 			isa = PBXGroup;
 			children = (
+				D407D1BC1D10B5ED00090BF5 /* crunch.wav */,
+				D407D1BD1D10B5ED00090BF5 /* win.wav */,
 				D4B86ACA1D0E4CC00028B018 /* AppDelegate.swift */,
 				D4B86ACC1D0E4CC00028B018 /* ViewController.swift */,
 				D4B86ACE1D0E4CC00028B018 /* Main.storyboard */,
@@ -248,7 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B86AD51D0E4CC00028B018 /* LaunchScreen.storyboard in Resources */,
+				D407D1BE1D10B5ED00090BF5 /* crunch.wav in Resources */,
 				D4B86AD21D0E4CC00028B018 /* Assets.xcassets in Resources */,
+				D407D1BF1D10B5ED00090BF5 /* win.wav in Resources */,
 				D4B86AD01D0E4CC00028B018 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +515,7 @@
 				D4B86AF11D0E4CC00028B018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4B86AF21D0E4CC00028B018 /* Build configuration list for PBXNativeTarget "pickersTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +524,7 @@
 				D4B86AF41D0E4CC00028B018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4B86AF51D0E4CC00028B018 /* Build configuration list for PBXNativeTarget "pickersUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +533,7 @@
 				D4B86AF71D0E4CC00028B018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
