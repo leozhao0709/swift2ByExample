@@ -104,9 +104,34 @@
                     <view key="view" contentMode="scaleToFill" id="lAq-UD-N6O">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKW-8G-Qoe">
+                                <rect key="frame" x="140" y="20" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3w7-4d-DpD" id="n3k-nJ-X7v"/>
+                                    <outlet property="delegate" destination="3w7-4d-DpD" id="PRy-LZ-Y2c"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGz-uw-jB8">
+                                <rect key="frame" x="277" y="277" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="3w7-4d-DpD" eventType="touchUpInside" id="VTY-JG-ir4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bGz-uw-jB8" firstAttribute="top" secondItem="GKW-8G-Qoe" secondAttribute="bottom" constant="41" id="4S0-Qi-tA9"/>
+                            <constraint firstItem="GKW-8G-Qoe" firstAttribute="top" secondItem="p5D-au-oKQ" secondAttribute="bottom" id="HgD-H9-23F"/>
+                            <constraint firstItem="bGz-uw-jB8" firstAttribute="centerX" secondItem="lAq-UD-N6O" secondAttribute="centerX" id="Wb1-RE-GSv"/>
+                            <constraint firstItem="GKW-8G-Qoe" firstAttribute="centerX" secondItem="lAq-UD-N6O" secondAttribute="centerX" id="fNE-pP-ing"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dependent" image="dependenticon" id="6A5-wd-M9R"/>
+                    <connections>
+                        <outlet property="dependentPicker" destination="GKW-8G-Qoe" id="9KM-UJ-gAV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQ4-pv-Trk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
