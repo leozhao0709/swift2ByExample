@@ -21,14 +21,18 @@ class FontListViewController: UITableViewController {
         let preferredTableViewFont = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         cellPointSize = preferredTableViewFont.pointSize
         tableView.estimatedRowHeight = cellPointSize
+        
+        if showsFavorites {
+            navigationItem.rightBarButtonItem = editButtonItem()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if showsFavorites {
-            fontNames = FavoritesList.sharedFavoritesList.favorites
-            tableView.reloadData()
-        }
+//        if showsFavorites {
+//            fontNames = FavoritesList.sharedFavoritesList.favorites
+//            tableView.reloadData()
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +57,50 @@ class FontListViewController: UITableViewController {
         cell.detailTextLabel?.text = fontNames[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return showsFavorites
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if !showsFavorites {
+            return
+        }
+        
+        if editingStyle == .Delete {
+            let favorite = fontNames[indexPath.row]
+            FavoritesList.sharedFavoritesList.removeFavorite(favorite)
+            fontNames = FavoritesList.sharedFavoritesList.favorites
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        FavoritesList.sharedFavoritesList.moveItem(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        fontNames = FavoritesList.sharedFavoritesList.favorites
+    }
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let indexPath = tableView.indexPathForSelectedRow
+        let tableViewCell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(tableViewCell)
+        let font = fontForDisplay(atIndexPath: indexPath!)
+        
+        if segue.identifier == "ShowFontSizes" {
+            let sizesVC = segue.destinationViewController as! FontSizesViewController
+            sizesVC.title = font.fontName
+            sizesVC.font = font
+        }
+        else {
+            let infoVC = segue.destinationViewController as! FontInfoViewController
+            infoVC.title = font.fontName
+            infoVC.font = font
+            infoVC.favorite = FavoritesList.sharedFavoritesList.favorites.contains(font.fontName)
+        }
     }
 
 }

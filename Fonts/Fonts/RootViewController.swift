@@ -53,15 +53,15 @@ class RootViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? familyNames.count : 1
+        return section == 1 ? familyNames.count : 1
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "All Font Families" : "My Favorite Fonts"
+        return section == 1 ? "All Font Families" : "My Favorite Fonts"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(RootViewController.familyCell, forIndexPath: indexPath)
             cell.textLabel?.font = fontForDisplay(atIndexPath: indexPath)
             cell.textLabel?.text = familyNames[indexPath.row]
@@ -79,7 +79,7 @@ class RootViewController: UITableViewController {
         let indexPath = tableView.indexPathForSelectedRow
         let listVC = segue.destinationViewController as! FontListViewController
         
-        if indexPath?.section == 0 {
+        if indexPath?.section == 1 {
             let familyName = familyNames[indexPath!.row]
             listVC.fontNames = (UIFont.fontNamesForFamilyName(familyName) as [String]).sort()
             listVC.navigationItem.title = familyName
