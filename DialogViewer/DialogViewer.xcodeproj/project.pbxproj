@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D408D4AC1D2204C5007AF107 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D4AB1D2204C5007AF107 /* HeaderCell.swift */; };
 		D4DDEB201D1DEC94003A9E49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DDEB1F1D1DEC94003A9E49 /* AppDelegate.swift */; };
 		D4DDEB221D1DEC94003A9E49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DDEB211D1DEC94003A9E49 /* ViewController.swift */; };
 		D4DDEB251D1DEC94003A9E49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DDEB231D1DEC94003A9E49 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D408D4AB1D2204C5007AF107 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		D4DDEB1C1D1DEC94003A9E49 /* DialogViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DialogViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DDEB1F1D1DEC94003A9E49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4DDEB211D1DEC94003A9E49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				D4DDEB261D1DEC94003A9E49 /* Assets.xcassets */,
 				D4DDEB281D1DEC94003A9E49 /* LaunchScreen.storyboard */,
 				D4DDEB2B1D1DEC94003A9E49 /* Info.plist */,
+				D408D4AB1D2204C5007AF107 /* HeaderCell.swift */,
 			);
 			path = DialogViewer;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D408D4AC1D2204C5007AF107 /* HeaderCell.swift in Sources */,
 				D4DDEB4E1D1DEF51003A9E49 /* ContentCell.swift in Sources */,
 				D4DDEB221D1DEC94003A9E49 /* ViewController.swift in Sources */,
 				D4DDEB201D1DEC94003A9E49 /* AppDelegate.swift in Sources */,
@@ -491,6 +495,7 @@
 				D4DDEB461D1DEC94003A9E49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4DDEB471D1DEC94003A9E49 /* Build configuration list for PBXNativeTarget "DialogViewerTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +504,7 @@
 				D4DDEB491D1DEC94003A9E49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4DDEB4A1D1DEC94003A9E49 /* Build configuration list for PBXNativeTarget "DialogViewerUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +513,7 @@
 				D4DDEB4C1D1DEC94003A9E49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
