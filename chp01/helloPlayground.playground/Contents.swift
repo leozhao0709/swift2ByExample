@@ -27,5 +27,7 @@ var z = notes.reduce(0){
     $0 + $1
 }
 
-z
+for i in (1..<5) {
+    i
+}
 
